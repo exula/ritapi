@@ -1,0 +1,23 @@
+{
+    "name": "rit/api",
+    "description": "",
+    "authors": [
+        {
+            "name": "Bradley Coudriet",
+            "email": "bjcpgd@rit.edu"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Rit\\Api\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
