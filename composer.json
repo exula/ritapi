@@ -1,6 +1,7 @@
 {
     "name": "rit/api",
-    "description": "",
+    "description": "A Laravel 4.2 package to interact with the RIT API",
+    "livense": "MIT",
     "authors": [
         {
             "name": "Bradley Coudriet",
@@ -9,8 +10,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*",
-        "guzzle/guzzle": "4.2.*"
+        "illuminate/support": "~4.2.*",
+        "guzzle/guzzle": "~4.2.*"
     },
     "autoload": {
         "classmap": [
@@ -20,5 +21,5 @@
             "Rit\\Api\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
