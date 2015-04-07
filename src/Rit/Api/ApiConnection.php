@@ -36,13 +36,16 @@ class ApiConnection {
      */
     function __construct() {
 
-        $this->key = (string) \Config::get('api::key');
-        $this->authorizationKey = (string) \Config::get('api::authorizationKey');
-        $this->apiUrl = (string) \Config::get('api::url');
-        $this->version = (string) \Config::get('api::version');
+        try {
+            $this->key = (string)\Config::get('api::config.key');
+            $this->authorizationKey = (string)\Config::get('api::config.authorizationKey');
+            $this->apiUrl = (string)\Config::get('api::config.url');
+            $this->version = (string)\Config::get('api::config.version');
 
-        $this->map = \Config::get('api::map');
-
+            $this->map = \Config::get('api::map');
+        } catch(\Exception $e) {
+            throw new Exception('Application config is not correct!');
+        }
         $this->GuzzleClient = new \GuzzleHttp\Client(array('base_url' => $this->apiUrl, 'headers' => array($this->authorizationKey => $this->key)));
 
     }
