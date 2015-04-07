@@ -1,2 +1,4 @@
 /vendor/
 *.swp
+.idea*
+atlassian-ide-plugin.xml
