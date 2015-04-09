@@ -45,9 +45,15 @@ class User extends ApiConnection {
 
     }
 
-    public function getCourses() {
+    public function getCourses($term = null) {
 
-        $json = $this->doQuery('faculty/'.$this->cn."/courses");
+        if($term != null) {
+            $options = array("term" => $term);
+        } else {
+            $options = array();
+        }
+
+        $json = $this->doQuery('faculty/'.$this->cn."/courses", $options);
         $collection = $this->returnCollection($json,'Rit\Api\Course');
 
         return $collection;

@@ -19,7 +19,7 @@ class ApiServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('rit/api');
-	}
+    }
 
 	/**
 	 * Register the service provider.

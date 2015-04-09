@@ -36,16 +36,13 @@ class ApiConnection {
      */
     function __construct() {
 
-        try {
-            $this->key = (string)\Config::get('api::config.key');
-            $this->authorizationKey = (string)\Config::get('api::config.authorizationKey');
-            $this->apiUrl = (string)\Config::get('api::config.url');
-            $this->version = (string)\Config::get('api::config.version');
+        $this->key = (string)\Config::get('api::key');
+        $this->authorizationKey = (string)\Config::get('api::authorizationKey');
+        $this->apiUrl = (string)\Config::get('api::url');
+        $this->version = (string)\Config::get('api::version');
 
-            $this->map = \Config::get('api::map');
-        } catch(\Exception $e) {
-            throw new Exception('Application config is not correct!');
-        }
+        $this->map = \Config::get('api::map');
+
         $this->GuzzleClient = new \GuzzleHttp\Client(array('base_url' => $this->apiUrl, 'headers' => array($this->authorizationKey => $this->key)));
 
     }
@@ -64,7 +61,10 @@ class ApiConnection {
 
         $res = $this->GuzzleClient->get($this->version."/".$url."/",
             array('query' =>
-                array($this->authorizationKey => $this->key)
+                array_merge(
+                    $options,
+                    array($this->authorizationKey => $this->key)
+                )
             )
         );
 
@@ -123,5 +123,16 @@ class ApiConnection {
         }
     }
 
+    public function getCourse($section, $term)
+    {
+        if(is_string($section) && is_string($term))
+        {
+            $json = $this->doQuery("course/".$section, array("term" => $term));
+
+            $courses[] = new Course($json);
+
+            return $courses;
+        }
+    }
 
 }
