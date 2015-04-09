@@ -129,9 +129,8 @@ class ApiConnection {
         {
             $json = $this->doQuery("course/".$section, array("term" => $term));
 
-            $courses[] = new Course($json);
+            return new Course($json);
 
-            return $courses;
         }
     }
 
