@@ -134,4 +134,11 @@ class ApiConnection {
         }
     }
 
+    public function getCurrentTerm()
+    {
+        $json = $this->doQuery('currenTerm');
+
+        return $json;
+    }
+
 }
