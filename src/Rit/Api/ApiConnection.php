@@ -36,10 +36,10 @@ class ApiConnection {
      */
     function __construct() {
 
-        $this->key = (string) config('api.key');
-        $this->authorizationKey = (string) config('api.authorizationKey');
-        $this->apiUrl = (string) config('api.url');
-        $this->version = (string) config('api.version');
+        $this->key = (string) config('ritapi.key');
+        $this->authorizationKey = (string) config('ritapi.authorizationKey');
+        $this->apiUrl = (string) config('ritapi.url');
+        $this->version = (string) config('ritapi.version');
 
         $this->map =  config('api.map');
 
