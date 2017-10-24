@@ -21,12 +21,5 @@
             "Rit\\Api\\": "src/"
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Rit\\Api\\ApiServiceProvider"
-            ]
-        }
-    },
     "minimum-stability": "stable"
 }
