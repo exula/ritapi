@@ -20,7 +20,11 @@ class ApiServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('rit/api');
+		//$this->package('rit/api');
+
+		$this->app->singleton(ApiConnection::class, function($app) {
+		    return new ApiConnection();
+        });
     }
 
 	/**
