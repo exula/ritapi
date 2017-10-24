@@ -22,6 +22,10 @@ class ApiServiceProvider extends ServiceProvider {
 	{
 		//$this->package('rit/api');
 
+        $this->publishes([
+            __DIR__.'/config/config.php' => config_path('ritapi.php'),
+        ]);
+
 		$this->app->singleton(ApiConnection::class, function($app) {
 		    return new ApiConnection();
         });
