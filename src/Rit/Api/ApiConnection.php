@@ -36,12 +36,12 @@ class ApiConnection {
      */
     function __construct() {
 
-        $this->key = (string)\Config::get('api::key');
-        $this->authorizationKey = (string)\Config::get('api::authorizationKey');
-        $this->apiUrl = (string)\Config::get('api::url');
-        $this->version = (string)\Config::get('api::version');
+        $this->key = (string) config('api.key');
+        $this->authorizationKey = (string) config('api.authorizationKey');
+        $this->apiUrl = (string) config('api.url');
+        $this->version = (string) config('api.version');
 
-        $this->map = \Config::get('api::map');
+        $this->map =  config('api.map');
 
         $this->GuzzleClient = new \GuzzleHttp\Client(array('base_url' => $this->apiUrl, 'headers' => array($this->authorizationKey => $this->key)));
 
