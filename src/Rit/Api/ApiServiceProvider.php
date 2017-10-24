@@ -1,4 +1,6 @@
-<?php namespace Rit\Api;
+<?php
+
+namespace Rit\Api;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -20,16 +22,6 @@ class ApiServiceProvider extends ServiceProvider {
 	{
 		$this->package('rit/api');
     }
-
-	/**
-	 * Register the service provider.
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
-		//
-	}
 
 	/**
 	 * Get the services provided by the provider.
