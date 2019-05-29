@@ -1,6 +1,6 @@
 {
     "name": "rit/api",
-    "description": "A Laravel 5.5 package to interact with the RIT API",
+    "description": "A Laravel 5.8 package to interact with the RIT API",
     "livense": "MIT",
     "authors": [
         {
@@ -10,8 +10,8 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "illuminate/support": "5.5.*",
-        "guzzlehttp/guzzle": "5.3.*"
+        "illuminate/support": "5.8.*",
+        "guzzlehttp/guzzle": "*"
     },
     "autoload": {
         "classmap": [
