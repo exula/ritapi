@@ -41,9 +41,9 @@ class ApiConnection {
         $this->apiUrl = (string) config('ritapi.url');
         $this->version = (string) config('ritapi.version');
 
-        $this->map =  config('api.map');
+        $this->map =  config('ritapi.map');
 
-        $this->GuzzleClient = new \GuzzleHttp\Client(array('base_url' => $this->apiUrl, 'headers' => array($this->authorizationKey => $this->key)));
+        $this->GuzzleClient = new \GuzzleHttp\Client(array('base_uri' => $this->apiUrl, 'headers' => array($this->authorizationKey => $this->key, 'debug' => true)));
 
     }
 
@@ -51,9 +51,9 @@ class ApiConnection {
 
         if(isset($this->map[$key])) {
             return $this->map[$key];
-        } else {
-            return false;
         }
+
+        return false;
 
     }
 
@@ -64,7 +64,7 @@ class ApiConnection {
                 array_merge(
                     $options,
                     array($this->authorizationKey => $this->key)
-                )
+                ),
             )
         );
 
@@ -72,9 +72,9 @@ class ApiConnection {
 
             return $res->json();
 
-        } else {
-            throw new Exception('API Error');
         }
+
+        throw new Exception('API Error');
     }
 
 
