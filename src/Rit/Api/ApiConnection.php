@@ -70,7 +70,7 @@ class ApiConnection {
 
         if($res->getStatusCode() == 200) {
 
-            return $res->json();
+            return json_decode($res->getBody(), true);
 
         }
 
