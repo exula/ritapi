@@ -62,7 +62,9 @@ class User extends ApiConnection {
     private function returnCollection($json,$object) {
         $collection = array();
         foreach($json as $meetingJson) {
-            $collection[] = new $object($meetingJson);
+            $obj = new $object($meetingJson);
+
+            $collection[] = (object)get_object_vars($obj);
         }
 
         return $collection;
