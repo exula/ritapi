@@ -43,8 +43,11 @@ class ApiConnection {
 
         $this->map = \Config::get('api::map');
 
-        $this->GuzzleClient = new \GuzzleHttp\Client(array('base_url' => $this->apiUrl, 'headers' => array($this->authorizationKey => $this->key)));
 
+
+        $this->GuzzleClient = new \GuzzleHttp\Client(['base_uri' => $this->apiUrl]);
+
+        //$this->GuzzleClient->setDefaultOptions(['verify' => false]);
     }
 
     public function getMap($key) {
@@ -64,14 +67,14 @@ class ApiConnection {
                 array_merge(
                     $options,
                     array($this->authorizationKey => $this->key)
-                )
+                ),
+                'verify' => false
             )
         );
 
+
         if($res->getStatusCode() == 200) {
-
-            return $res->json();
-
+            return json_decode($res->getBody()->getContents(), true);
         } else {
             throw new Exception('API Error');
         }
